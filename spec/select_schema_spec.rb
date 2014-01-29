@@ -23,7 +23,7 @@ describe SelectSchema do
     expect(best_fit_hotel_array).to match_array([hotel_3])
   end
 
-  it 'should select multiple @hotels if several @hotels have the same price and rating which is the best fit' do
+  it 'should select multiple hotels if several hotels have the same price and rating which is the best fit' do
     hotel_3 = double("hotel_3", price: 100, rating: 3)
     @hotels << hotel_3
 

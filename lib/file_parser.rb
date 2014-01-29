@@ -1,16 +1,22 @@
 class FileParser
   def parse filepath = './input_data.txt'
     search_criteria = []
-    File.readlines(filepath).each do |line|
-      customer_type = line.split(":").first.downcase!
-      days = get_days line.split(":").last
-      search_criteria << {
-          customer_type: customer_type,
-          days: days
-      }
+    begin
+      File.readlines(filepath).each do |line|
+        customer_type = line.split(":").first.downcase!
+        days = get_days line.split(":").last
+        search_criteria << {
+            customer_type: customer_type,
+            days: days
+        }
+      end
+      search_criteria
+    rescue
+      raise "Error happens!"
     end
-    search_criteria
   end
+
+  private
 
   def get_days days_info
     result = []

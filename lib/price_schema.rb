@@ -17,6 +17,8 @@ class PriceSchema
     @price_structure[customer_type.to_sym][day_type(day).to_sym]
   end
 
+  private
+
   def day_type day
     weekdays = ['mon', 'tues', 'wed', 'thur', 'fri']
     weekends = ['sat', 'sun']

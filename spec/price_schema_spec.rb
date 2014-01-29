@@ -22,4 +22,10 @@ describe PriceSchema do
       expect(price_schema.price('rewards', 'sun')).to eql(80)
     end
   end
+
+  context 'should raise error' do
+    it 'when day format is not valid' do
+      expect{price_schema.price('rewards', 'invalid day')}.to raise_error('Day format is not valid!')
+    end
+  end
 end

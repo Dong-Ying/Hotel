@@ -6,13 +6,13 @@ require_relative 'select_schema'
 
 class App
 
-  def run
+  def run filepath = './input_data.txt'
     hotel_selector = HotelSelector.new(hotels, select_schema)
-    search_criteria = FileParser.new.parse
-    search_criteria.each_with_index do |search_criterion, index|
+    select_criteria = FileParser.new.parse filepath
+    select_criteria.each_with_index do |select_criterion, index|
       puts
       puts "Best-fit hotels for customer #{index + 1}"
-      best_fit_hotels = hotel_selector.select search_criterion[:customer_type], search_criterion[:days]
+      best_fit_hotels = hotel_selector.select select_criterion[:customer_type], select_criterion[:days]
       best_fit_hotels.each do |hotel|
         puts hotel.name
       end
